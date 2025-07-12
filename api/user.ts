@@ -6,7 +6,11 @@ type LoginProps = {
   password: string;
 };
 
-const loginUser = async ({ email, password }: LoginProps) => {
+type RegistrationProps = LoginProps & {
+  userName: string;
+};
+
+export const loginUser = async ({ email, password }: LoginProps) => {
   try {
     const loginBody = {
       email: email,
@@ -22,4 +26,24 @@ const loginUser = async ({ email, password }: LoginProps) => {
   }
 };
 
-export default loginUser;
+export const registerUser = async ({
+  userName,
+  email,
+  password,
+}: RegistrationProps) => {
+  try {
+    const registrationbody = {
+      userName: userName,
+      email: email,
+      password: password,
+    };
+
+    const response = await axios.post(
+      `${config.BASE_URL}/user`,
+      registrationbody
+    );
+    return response;
+  } catch (err) {
+    throw err;
+  }
+};

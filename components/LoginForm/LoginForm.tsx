@@ -1,53 +1,37 @@
-import { useState } from "react";
+import { loginUser } from "@/api/user";
 import { useRouter } from "next/router";
-import { registerUser } from "@/api/user";
-import { config } from "../../config";
+import { useState } from "react";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import styles from "./styles.module.css";
 
-const RegistrationForm = () => {
-  const [userName, setUserName] = useState("");
+const onLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const router = useRouter();
 
-  const onSubmit = async () => {
+  const onLogin = async () => {
     try {
-      const response = await registerUser({
-        userName: userName,
-        email: email,
-        password: password,
-      });
+      const response = await loginUser({ email: email, password: password });
 
       setErrorMessage("");
       Cookies.set("Forum-app-user-token", response.data.jwt);
       router.push("/");
     } catch (err) {
-      console.log(err);
       // @ts-expect-error will fix this later
-      if (err.status === 409) {
-        setErrorMessage("User already exists");
+      if (err.status === 401) {
+        setErrorMessage("Wrong email or password");
       }
       // @ts-expect-error will fix this later
-      if (err.status === 500) {
-        setErrorMessage("Check if provided email is correct");
-      }
+      console.log(err.status);
     }
   };
-
   return (
     <div className={styles.container}>
-      <h2>Join our forum</h2>
-      <div className={styles.formWrapper}>
-        <input
-          type="text"
-          placeholder="First name"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-        />
+      <h2>Log in</h2>
+      <div className={styles.inputWrapper}>
         <input
           type="text"
           placeholder="Email"
@@ -60,14 +44,14 @@ const RegistrationForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={onSubmit}>Submit</button>
+        <button onClick={onLogin}>Login</button>
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
       </div>
-      <Link href="/login" className={styles.loginLink}>
-        Have an account already? Login here
+      <Link href="/register" className={styles.registerLink}>
+        Do not have an account? Register here
       </Link>
     </div>
   );
 };
 
-export default RegistrationForm;
+export default onLogin;

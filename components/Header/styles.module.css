@@ -1,18 +1,43 @@
 .container {
   height: 90px;
-  background-color: bisque;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2rem;
+  border-bottom: 1px solid gray;
+}
 
-  ul {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
+.title {
+  height: 100%;
+  text-decoration: none;
+  color: black;
+  padding: 0 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0.3rem;
+  transition: 0.3s;
 
-    a {
-      text-decoration: none;
-    }
+  &:hover {
+    background-color: #cecece9a;
   }
+}
+
+.buttonWrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  border: 1px solid black;
+  border-radius: 0.3rem;
+
+  &:hover {
+    background-color: rgba(41, 41, 41, 0.288);
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: black;
 }

@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .formWrapper {
+    display: inherit;
+    flex-direction: column;
+  }
+}

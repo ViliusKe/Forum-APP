@@ -37,17 +37,12 @@ export const insertPost = async ({ jwt, insertBody }: InsertPostProps) => {
 };
 
 type FetchPostByIdProps = {
-  jwt: string;
   id: string;
 };
 
-export const fetchPostById = async ({ id, jwt }: FetchPostByIdProps) => {
+export const fetchPostById = async ({ id }: FetchPostByIdProps) => {
   try {
-    const response = await axios.get(`${config.BASE_URL}/posts/${id}`, {
-      headers: {
-        Authorization: jwt,
-      },
-    });
+    const response = await axios.get(`${config.BASE_URL}/posts/${id}`);
 
     return response;
   } catch (err) {
@@ -55,7 +50,7 @@ export const fetchPostById = async ({ id, jwt }: FetchPostByIdProps) => {
   }
 };
 
-type DeletePostByIdProps = FetchPostByIdProps;
+type DeletePostByIdProps = { id: string; jwt: string };
 
 export const DeletePostById = async ({ id, jwt }: DeletePostByIdProps) => {
   try {

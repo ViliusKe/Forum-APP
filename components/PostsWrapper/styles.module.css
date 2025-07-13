@@ -6,6 +6,11 @@
   padding: 1rem;
 }
 
+/* .topRow {
+  display: flex;
+  justify-content: space-between;
+} */
+
 .postCard {
   display: grid;
   grid-template-columns: 10% 90%;
@@ -33,13 +38,4 @@
 .title,
 .content {
   grid-column: 2;
-}
-
-.filterBtn {
-  border: 1px solid black;
-  border-radius: 0.3rem;
-
-  &:hover {
-    background-color: rgba(41, 41, 41, 0.288);
-  }
 }

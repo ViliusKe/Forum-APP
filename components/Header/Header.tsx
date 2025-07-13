@@ -41,6 +41,11 @@ const Header = () => {
           </>
         ) : (
           <>
+            <Button className={styles.insertBtn}>
+              <Link href={"/createPost"} className={styles.link}>
+                Create a post
+              </Link>
+            </Button>
             <Button
               onClick={handleLogout}
               className={styles.button}

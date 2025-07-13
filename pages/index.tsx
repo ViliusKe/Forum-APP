@@ -10,7 +10,7 @@ import { fetchAllPosts } from "@/api/post";
 
 export default function Home() {
   const router = useRouter();
-  const [posts, setPosts] = useState<PostType[]>([]);
+  const [posts, setPosts] = useState<PostType[] | null>(null);
   const [filter, setFilter] = useState<"all" | "answered">("all");
 
   const GetAllPosts = async () => {
@@ -40,11 +40,15 @@ export default function Home() {
   return (
     <>
       <PageTemplate>
-        <PostsWrapper
-          posts={posts}
-          filter={filter}
-          toggleFilter={toggleFilter}
-        />
+        {posts ? (
+          <PostsWrapper
+            posts={posts}
+            filter={filter}
+            toggleFilter={toggleFilter}
+          />
+        ) : (
+          <>Loading</>
+        )}
       </PageTemplate>
     </>
   );

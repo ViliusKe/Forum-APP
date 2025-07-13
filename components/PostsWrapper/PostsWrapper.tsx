@@ -21,15 +21,19 @@ const PostsWrapper = ({ posts, filter, toggleFilter }: PostsWrapperProps) => {
 
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.topRow}>
         <Button
           title={filter === "all" ? "Show Answered" : "Show All"}
-          className={styles.filterBtn}
+          className={styles.rowBtn}
           onClick={toggleFilter}
         />
       </div>
       {posts.map((post) => (
-        <Link href={""} key={post.id} className={styles.postCard}>
+        <Link
+          href={`/post/${post.id}`}
+          key={post.id}
+          className={styles.postCard}
+        >
           <div>
             {post.answerIds.length}{" "}
             {post.answerIds.length === 1 ? "answer" : "answers"}

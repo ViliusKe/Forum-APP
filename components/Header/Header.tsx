@@ -54,22 +54,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// import { useEffect, useState } from "react";
-
-// const Header = () => {
-//   const [loggedIn, setLoggedIn] = useState(false);
-
-//   useEffect(() => {
-//     console.log("Running useEffect in Header");
-//     if (typeof window !== "undefined") {
-//       // Just simulate the call without actual import to isolate error
-//       const fakeIsLoggedIn = () => true;
-//       setLoggedIn(fakeIsLoggedIn());
-//     }
-//   }, []);
-
-//   return <div>Header loggedIn: {loggedIn.toString()}</div>;
-// };
-
-// export default Header;

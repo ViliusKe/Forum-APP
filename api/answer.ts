@@ -31,19 +31,22 @@ export const createAnswer = async ({
 
 type AnswerHeadersAndIdProps = {
   jwt: string;
-  id: string;
+  answerId: string;
 };
 
 export const deleteAnswerById = async ({
-  id,
+  answerId,
   jwt,
 }: AnswerHeadersAndIdProps) => {
   try {
-    const response = await axios.delete(`${config.BASE_URL}/answers/${id}`, {
-      headers: {
-        Authorization: jwt,
-      },
-    });
+    const response = await axios.delete(
+      `${config.BASE_URL}/posts/answers/${answerId}`,
+      {
+        headers: {
+          Authorization: jwt,
+        },
+      }
+    );
 
     return response;
   } catch (err) {
@@ -51,10 +54,13 @@ export const deleteAnswerById = async ({
   }
 };
 
-export const likeAnswerById = async ({ id, jwt }: AnswerHeadersAndIdProps) => {
+export const likeAnswerById = async ({
+  answerId,
+  jwt,
+}: AnswerHeadersAndIdProps) => {
   try {
     const response = await axios.put(
-      `${config.BASE_URL}/answers/${id}/like`,
+      `${config.BASE_URL}/answers/${answerId}/like`,
       {},
       {
         headers: {
@@ -70,12 +76,12 @@ export const likeAnswerById = async ({ id, jwt }: AnswerHeadersAndIdProps) => {
 };
 
 export const dislikeAnswerById = async ({
-  id,
+  answerId,
   jwt,
 }: AnswerHeadersAndIdProps) => {
   try {
     const response = await axios.put(
-      `${config.BASE_URL}/answers/${id}/dislike`,
+      `${config.BASE_URL}/answers/${answerId}/dislike`,
       {},
       {
         headers: {

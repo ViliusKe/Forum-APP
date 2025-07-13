@@ -4,6 +4,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import styles from "./styles.module.css";
+import Button from "../Button/Button";
 
 const onLogin = () => {
   const [email, setEmail] = useState("");
@@ -44,7 +45,11 @@ const onLogin = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={onLogin}>Login</button>
+        <Button
+          onClick={onLogin}
+          title={"Login"}
+          className={styles.loginBtn}
+        ></Button>
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
       </div>
       <Link href="/register" className={styles.registerLink}>

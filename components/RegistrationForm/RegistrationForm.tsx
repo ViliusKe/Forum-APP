@@ -5,6 +5,7 @@ import { config } from "../../config";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import styles from "./styles.module.css";
+import Button from "../Button/Button";
 
 const RegistrationForm = () => {
   const [userName, setUserName] = useState("");
@@ -40,27 +41,34 @@ const RegistrationForm = () => {
 
   return (
     <div className={styles.container}>
-      <h2>Join our forum</h2>
+      <h2 className={styles.registerTitle}>Join our forum</h2>
       <div className={styles.formWrapper}>
         <input
+          className={styles.input}
           type="text"
           placeholder="First name"
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
         />
         <input
+          className={styles.input}
           type="text"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          className={styles.input}
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={onSubmit}>Submit</button>
+        <Button
+          title="Register"
+          className={styles.registerBtn}
+          onClick={onSubmit}
+        />
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
       </div>
       <Link href="/login" className={styles.loginLink}>

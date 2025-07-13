@@ -3,8 +3,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Post as PostType } from "../../types/post";
 import { fetchPostById } from "@/api/post";
+import PostPage from "@/components/PostPage/PostPage";
 
-const PostPage = async () => {
+const PostPageById = () => {
   const [post, setPost] = useState<PostType | null>(null);
   const router = useRouter();
   const id = router.query.id as string;
@@ -14,7 +15,7 @@ const PostPage = async () => {
       const response = await fetchPostById({ id: id });
 
       console.log(response.data.post);
-      //   setPost(response.data.post)
+      setPost(response.data.post);
     } catch (err) {
       console.log(err);
     }
@@ -22,9 +23,13 @@ const PostPage = async () => {
 
   useEffect(() => {
     fetchPost(id);
-  });
+  }, [id]);
 
-  return <PageTemplate>{post ? <>PostPage</> : <>Loading</>}</PageTemplate>;
+  return (
+    <PageTemplate>
+      {post ? <PostPage post={post} /> : <>Loading</>}
+    </PageTemplate>
+  );
 };
 
-export default PostPage;
+export default PostPageById;

@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #f0fff0;
+  gap: 2rem;
+}
+
+.post {
+  background-color: #f7fcf7;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-width: 80%;
+  width: 100%;
+
+  h1 {
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+    color: #333;
+  }
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 80%;
+  width: 100%;
+
+  /* background-color: #ffffff; */
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+
+  p {
+    margin: 0.25rem 0;
+    line-height: 1.4;
+  }
+}
+
+.answer {
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.answerAuthor {
+  color: #2d5a27;
+}
+
+.answerField {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 80%;
+  width: 100%;
+
+  padding: 1.5rem;
+  background-color: #f7fcf7; /* a soft, light green */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow for elevation */
+
+  textarea {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    min-height: 80px;
+    resize: none;
+  }
+
+  submitBtn {
+    background-color: #2d5a27;
+    &:hover {
+      background-color: #24641f;
+    }
+  }
+}

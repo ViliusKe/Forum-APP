@@ -18,7 +18,6 @@ const InsertPost = () => {
         title,
         content,
       };
-      console.log(insertBody);
 
       const response = await insertPost({
         jwt: jwt!,
@@ -39,7 +38,6 @@ const InsertPost = () => {
     <div className={styles.container}>
       <div className={styles.inputCard}>
         <h3>Post a question and our community will gladly help you!</h3>
-        {/* <h4>Title of you question</h4> */}
         <input
           className={styles.titleInput}
           type="text"

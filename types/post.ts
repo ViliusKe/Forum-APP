@@ -10,7 +10,8 @@ export type Post = {
   authorId: string;
   answerIds: string[];
   createdAt: Date;
-  author?: Author | null;
+  author: Author;
+  answers?: Answer[];
 };
 
 export type Answer = {
@@ -21,6 +22,7 @@ export type Answer = {
   createdAt: Date;
   likes: string[];
   dislikes: string[];
+  author: Author;
 };
 
 export type PostWithAnswers = Post & {

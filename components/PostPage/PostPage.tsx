@@ -8,14 +8,11 @@ import { useRouter } from "next/router";
 import { createAnswer, deleteAnswerById } from "@/api/answer";
 import { getUserIdFromToken } from "@/utils/auth";
 import { DeletePostById } from "@/api/post";
+import PostCard from "../PostCard/PostCard";
+import AnswerList from "../AnswersList/AnswersList";
 
 type PostPageProps = {
   post: PostType;
-};
-
-type AnswerHeadersAndIdProps = {
-  jwt: string;
-  answerId: string;
 };
 
 const PostPage = ({ post }: PostPageProps) => {
@@ -72,38 +69,13 @@ const PostPage = ({ post }: PostPageProps) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.post}>
-        <h1>{post.title}</h1>
-        <p>{post.content}</p>
-        <p>Posted by: {post.author.userName}</p>
-        {userId === post.author.id && (
-          <Button
-            type={"DANGER"}
-            title="Delete Post"
-            className={styles.deleteBtn}
-            onClick={deletePost}
-          />
-        )}
-      </div>
-      <div className={styles.answers}>
-        {post.answers && post.answers.length > 0 ? (
-          post.answers.map((answer) => (
-            <div key={answer.id} className={styles.answer}>
-              <p className={styles.answerAuthor}>{answer.author.userName}</p>
-              <p>{answer.content}</p>
-              {jwt && answer.authorId === userId && (
-                <Button
-                  type={"DANGER"}
-                  title={"Delete"}
-                  onClick={() => deleteAnswer(answer.id)}
-                />
-              )}
-            </div>
-          ))
-        ) : (
-          <p>No answers yet.</p>
-        )}
-      </div>
+      <PostCard post={post} userId={userId!} onClick={deletePost} />
+      <AnswerList
+        post={post}
+        userId={userId!}
+        onDelete={deleteAnswer}
+        jwt={jwt!}
+      />
       {loggedIn ? (
         <div className={styles.answerField}>
           {" "}

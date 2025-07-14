@@ -1,13 +1,13 @@
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { isLoggedIn, logoutUser } from "@/utils/auth";
 import Button from "../Button/Button";
+import BurgerImg from "../../assets/img/burger-menu-left-svgrepo-com.svg";
 
 const Header = () => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const router = useRouter();
+  const [isMobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -17,7 +17,6 @@ const Header = () => {
   const handleLogout = () => {
     logoutUser();
     setLoggedIn(false);
-    // router.push("/login");
   };
 
   return (
@@ -54,6 +53,44 @@ const Header = () => {
           </>
         )}
       </div>
+
+      <button
+        className={styles.burgerBtn}
+        onClick={() => setMobileMenu((prevState) => !prevState)}
+      >
+        <img src={BurgerImg.src} />
+      </button>
+      {isMobileMenu && (
+        <div className={styles.overlay}>
+          {!loggedIn ? (
+            <>
+              <Button className={styles.mobileButton}>
+                <Link href="/login" className={styles.link}>
+                  Login
+                </Link>
+              </Button>
+              <Button className={styles.mobileButton}>
+                <Link href="/register" className={styles.link}>
+                  Register
+                </Link>
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button className={styles.mobileButton}>
+                <Link href={"/createPost"} className={styles.link}>
+                  Create a post
+                </Link>
+              </Button>
+              <Button
+                onClick={handleLogout}
+                className={styles.mobileButton}
+                title={"Logout"}
+              />
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 };

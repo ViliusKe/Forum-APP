@@ -1,8 +1,11 @@
 import styles from "./styles.module.css";
-import Link from "next/link";
 
 const Footer = () => {
-  return <div className={styles.container}>Footer</div>;
+  return (
+    <footer className={styles.container}>
+      <p className={styles.credit}>© Study Project</p>
+    </footer>
+  );
 };
 
 export default Footer;

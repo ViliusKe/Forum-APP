@@ -42,3 +42,56 @@
   text-decoration: none;
   color: black;
 }
+
+.overlay {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #dcf0dc;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+.burgerBtn {
+  width: 3rem;
+  background-color: transparent;
+  border: none;
+  display: none;
+
+  img {
+    width: 100%;
+  }
+}
+
+.mobileButton {
+  background-color: #e0f5e0!;
+  padding: 10px 20px!;
+  border-radius: 6px!;
+  font-size: 16px!;
+  border: 1px solid #a0cfa0!;
+  cursor: pointer!;
+  text-align: center!;
+  width: 100%!;
+
+  a {
+    text-decoration: none;
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container .buttonWrapper {
+    display: none;
+  }
+
+  .burgerBtn {
+    display: flex;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

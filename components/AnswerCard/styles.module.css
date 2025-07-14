@@ -1,0 +1,26 @@
+.container {
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.answerAuthor {
+  color: #2d5a27;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.voteButtons {
+  display: flex;
+  gap: 12px;
+}

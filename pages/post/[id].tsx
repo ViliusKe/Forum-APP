@@ -14,7 +14,6 @@ const PostPageById = () => {
     try {
       const response = await fetchPostById({ id: id });
 
-      console.log(response.data.post);
       setPost(response.data.post);
     } catch (err) {
       console.log(err);

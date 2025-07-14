@@ -1,1 +1,11 @@
+.container {
+  padding: 20px;
+  background-color: #e6f7e6;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  font-size: 14px;
+}
 
+.credit {
+  color: #666;
+}

@@ -22,7 +22,6 @@ export default function Home() {
       });
 
       setPosts(response.data.posts);
-      console.log(response.data.posts);
     } catch (err) {
       console.log(err);
     }

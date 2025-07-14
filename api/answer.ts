@@ -60,7 +60,7 @@ export const likeAnswerById = async ({
 }: AnswerHeadersAndIdProps) => {
   try {
     const response = await axios.put(
-      `${config.BASE_URL}/answers/${answerId}/like`,
+      `${config.BASE_URL}/posts/answers/${answerId}/like`,
       {},
       {
         headers: {
@@ -81,7 +81,7 @@ export const dislikeAnswerById = async ({
 }: AnswerHeadersAndIdProps) => {
   try {
     const response = await axios.put(
-      `${config.BASE_URL}/answers/${answerId}/dislike`,
+      `${config.BASE_URL}/posts/answers/${answerId}/dislike`,
       {},
       {
         headers: {

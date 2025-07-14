@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import { isLoggedIn, logoutUser } from "@/utils/auth";
 import Button from "../Button/Button";
 import BurgerImg from "../../assets/img/burger-menu-left-svgrepo-com.svg";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const router = useRouter();
   const [loggedIn, setLoggedIn] = useState(false);
   const [isMobileMenu, setMobileMenu] = useState(false);
 
@@ -17,6 +19,7 @@ const Header = () => {
   const handleLogout = () => {
     logoutUser();
     setLoggedIn(false);
+    router.reload();
   };
 
   return (

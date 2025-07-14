@@ -21,7 +21,9 @@ const PostPageById = () => {
   };
 
   useEffect(() => {
-    fetchPost(id);
+    if (id) {
+      fetchPost(id);
+    }
   }, [id]);
 
   return (

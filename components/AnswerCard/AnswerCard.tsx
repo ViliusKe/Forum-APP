@@ -24,13 +24,26 @@ const AnswerCard = ({ answer, userId, jwt, onDelete }: AnswerCardProps) => {
   const handleVote = async (type: "like" | "dislike") => {
     try {
       const voteFunction = type === "like" ? likeAnswerById : dislikeAnswerById;
-
       const response = await voteFunction({ answerId: answer.id, jwt });
 
       setLikes(response.data.likes);
       setDislikes(response.data.dislikes);
-      setHasLiked(type === "like");
-      setHasDisliked(type === "dislike");
+
+      if (type === "like") {
+        if (hasLiked) {
+          setHasLiked(false);
+        } else {
+          setHasLiked(true);
+          setHasDisliked(false);
+        }
+      } else {
+        if (hasDisliked) {
+          setHasDisliked(false);
+        } else {
+          setHasDisliked(true);
+          setHasLiked(false);
+        }
+      }
     } catch (err) {
       console.error(err);
     }

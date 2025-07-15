@@ -43,9 +43,7 @@ const PostPage = ({ post }: PostPageProps) => {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setLoggedIn(isLoggedIn());
-    }
+    setLoggedIn(isLoggedIn());
   }, []);
 
   const deletePost = async () => {

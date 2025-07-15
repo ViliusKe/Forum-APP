@@ -12,9 +12,7 @@ const Header = () => {
   const [isMobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      setLoggedIn(isLoggedIn());
-    }
+    setLoggedIn(isLoggedIn());
   }, []);
   const handleLogout = () => {
     logoutUser();

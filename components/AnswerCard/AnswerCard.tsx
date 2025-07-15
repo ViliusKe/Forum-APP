@@ -5,6 +5,7 @@ import { useState } from "react";
 import { likeAnswerById, dislikeAnswerById } from "../../api/answer";
 import ThumbUp from "../../assets/img/ThumbUp";
 import ThumbDown from "../../assets/img/ThumbDown";
+import { isLoggedIn } from "@/utils/auth";
 
 type AnswerCardProps = {
   answer: Answer;
@@ -20,6 +21,8 @@ const AnswerCard = ({ answer, userId, jwt, onDelete }: AnswerCardProps) => {
   const [hasDisliked, setHasDisliked] = useState(
     answer.dislikes.includes(userId)
   );
+
+  const loggedIn = isLoggedIn();
 
   const handleVote = async (type: "like" | "dislike") => {
     try {
@@ -59,6 +62,7 @@ const AnswerCard = ({ answer, userId, jwt, onDelete }: AnswerCardProps) => {
           onClick={() => handleVote("like")}
           className={styles.iconButton}
           aria-label="Like"
+          disabled={!loggedIn} // disable if not logged in
         >
           <ThumbUp filled={hasLiked} />
           <span>{likes}</span>
@@ -67,6 +71,7 @@ const AnswerCard = ({ answer, userId, jwt, onDelete }: AnswerCardProps) => {
           onClick={() => handleVote("dislike")}
           className={styles.iconButton}
           aria-label="Dislike"
+          disabled={!loggedIn} // disable if not logged in
         >
           <ThumbDown filled={hasDisliked} />
           <span>{dislikes}</span>

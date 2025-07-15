@@ -62,7 +62,7 @@ const AnswerCard = ({ answer, userId, jwt, onDelete }: AnswerCardProps) => {
           onClick={() => handleVote("like")}
           className={styles.iconButton}
           aria-label="Like"
-          disabled={!loggedIn} // disable if not logged in
+          disabled={!loggedIn}
         >
           <ThumbUp filled={hasLiked} />
           <span>{likes}</span>
@@ -71,7 +71,7 @@ const AnswerCard = ({ answer, userId, jwt, onDelete }: AnswerCardProps) => {
           onClick={() => handleVote("dislike")}
           className={styles.iconButton}
           aria-label="Dislike"
-          disabled={!loggedIn} // disable if not logged in
+          disabled={!loggedIn}
         >
           <ThumbDown filled={hasDisliked} />
           <span>{dislikes}</span>

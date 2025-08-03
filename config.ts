@@ -1,4 +1,3 @@
 export const config = {
-  BASE_URL: "http://localhost:3005",
+  BASE_URL: "https://forum-api-x5qe.onrender.com",
 };
-// TO DO change when deploying

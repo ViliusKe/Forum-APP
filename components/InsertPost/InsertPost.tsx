@@ -19,7 +19,7 @@ const InsertPost = () => {
         content,
       };
 
-      const response = await insertPost({
+      await insertPost({
         jwt: jwt!,
         insertBody: insertBody,
       });

@@ -2,14 +2,14 @@ import axios from "axios";
 import { config } from "../config";
 
 type FetchPostsProps = {
-  filter?: string;
+  filter?: "all" | "answered";
 };
 
-export const fetchAllPosts = async ({ filter = "" }: FetchPostsProps) => {
+export const fetchAllPosts = async ({ filter = "all" }: FetchPostsProps) => {
   try {
-    const response = await axios.get(
-      `${config.BASE_URL}/posts${filter ? `?filter=${filter}` : ""}`
-    );
+    const filterQuery = filter === "answered" ? "?filter=answered" : "";
+
+    const response = await axios.get(`${config.BASE_URL}/posts${filterQuery}`);
 
     return response;
   } catch (err) {

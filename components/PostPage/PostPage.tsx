@@ -30,7 +30,7 @@ const PostPage = ({ post }: PostPageProps) => {
 
       if (!answerContent.trim()) return;
 
-      const response = await createAnswer({
+      await createAnswer({
         jwt: jwt!,
         id: post.id,
         insertBody,

@@ -6,7 +6,7 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 import Button from "../Button/Button";
 
-const onLogin = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -59,4 +59,4 @@ const onLogin = () => {
   );
 };
 
-export default onLogin;
+export default Login;

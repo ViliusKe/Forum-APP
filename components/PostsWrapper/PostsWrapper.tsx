@@ -2,7 +2,6 @@ import styles from "./styles.module.css";
 import { Post as PostType } from "../../types/post";
 import Link from "next/link";
 import Button from "../Button/Button";
-import { useState } from "react";
 
 type PostsWrapperProps = {
   posts: PostType[];

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { registerUser } from "@/api/user";
-import { config } from "../../config";
 import Cookies from "js-cookie";
 import Link from "next/link";
 import styles from "./styles.module.css";

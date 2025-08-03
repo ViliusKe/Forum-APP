@@ -1,9 +1,7 @@
 import InsertPost from "@/components/InsertPost/InsertPost";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 
-type Props = {};
-
-const index = (props: Props) => {
+const index = () => {
   return (
     <PageTemplate>
       <InsertPost />

@@ -1,25 +1,16 @@
-import { Geist, Geist_Mono } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import PostsWrapper from "@/components/PostsWrapper/PostsWrapper";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Post as PostType } from "../types/post";
-import Cookies from "js-cookie";
 import { fetchAllPosts } from "@/api/post";
 
 export default function Home() {
-  const router = useRouter();
   const [posts, setPosts] = useState<PostType[] | null>(null);
   const [filter, setFilter] = useState<"all" | "answered">("all");
 
   const GetAllPosts = async () => {
     try {
-      const filterQuery = filter === "answered" ? "answered" : "";
-
-      const response = await fetchAllPosts({
-        filter: filterQuery,
-      });
+      const response = await fetchAllPosts({ filter });
 
       setPosts(response.data.posts);
     } catch (err) {
